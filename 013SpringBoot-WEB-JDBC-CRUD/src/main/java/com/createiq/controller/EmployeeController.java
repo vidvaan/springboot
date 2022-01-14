@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,14 +36,13 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="/saveEmp",method=RequestMethod.POST)
-	public String saveEmp(@Valid Employee employee, BindingResult result) {
-		
-		System.out.println(employee);
+	public String saveEmp(@Valid  Employee employee, BindingResult result,Model model) {
+		model.addAttribute("employee", employee);
 		
 		if(result.hasErrors()) {
 			return "addEmp";
 		}
-		//employeeService.add(employee);
+		employeeService.add(employee);
 		return "redirect:/allEmp";
 	}
 	
