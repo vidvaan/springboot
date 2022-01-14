@@ -1,9 +1,14 @@
 package com.createiq.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Employee {
-	
 	private Integer eid;
+	
+	@NotEmpty(message="Employee Name Should not be empty")
 	private String ename;
+	@NotNull(message="Employee Salary Should not be empty")
 	private Double esal;
 
 	public Employee() {
