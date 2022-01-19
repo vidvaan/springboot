@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.createiq.model.Employee;
+import com.createiq.model.ResponseModel;
 import com.createiq.service.EmployeeService;
 
 @Controller("empController")
@@ -46,6 +49,9 @@ public class EmployeeController {
 		return "redirect:/allEmp";
 	}
 	
+	
+	
+	
 	//deleteById
 
 	@RequestMapping("/deleteById")
@@ -67,4 +73,18 @@ public class EmployeeController {
 		employeeService.update(employee);
 		return "redirect:/allEmp";
 	}
+	
+	
+	@RequestMapping(value="/rest/xml/allEmp", produces= "application/xml")
+	public @ResponseBody List<Employee> findAllRS(){
+		return employeeService.findAll();
+	}
+	
+	@RequestMapping(value="/rest/json/allEmp", produces= "application/json")
+	public @ResponseBody List<Employee> findAllRSJson(){
+		return employeeService.findAll();
+	}
+	
+	
+	
 }
