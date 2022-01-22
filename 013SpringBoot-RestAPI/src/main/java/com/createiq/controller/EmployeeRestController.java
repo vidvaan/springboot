@@ -25,6 +25,11 @@ public class EmployeeRestController {
 	public List<Employee> findAll() {
 		return employeeService.findAll();
 	}
+	
+	@GetMapping("/findByName/{ename}")
+	public List<Employee> findByName(@PathVariable("ename") String ename) {
+		return employeeService.findByName(ename);
+	}
 
 	@GetMapping("/findById/{eid}")
 	public Employee findById(@PathVariable("eid") Integer eid) {

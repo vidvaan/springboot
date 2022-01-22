@@ -42,8 +42,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public List<Employee> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("SELECT * FROM EMP02_TAB WHERE ENAME = ?",new Object[] {name},new int[] { Types.VARCHAR},  new BeanPropertyRowMapper(Employee.class));
 	}
 
 	@Override
