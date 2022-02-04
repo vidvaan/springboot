@@ -5,7 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 @Entity
+@NamedQueries(value = { @NamedQuery(name = "EMP.FindBySal", query = "select e from Employee e where e.esal = :esal") })
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,5 +52,12 @@ public class Employee {
 	public void setEsal(Double esal) {
 		this.esal = esal;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [eid=" + eid + ", ename=" + ename + ", esal=" + esal + "]";
+	}
+	
+	
 
 }

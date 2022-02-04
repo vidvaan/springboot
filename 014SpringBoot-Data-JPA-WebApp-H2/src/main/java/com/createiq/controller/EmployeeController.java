@@ -1,5 +1,7 @@
 package com.createiq.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,7 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/findAll")
-	public ResponseEntity<?> findAll() {
+	public ResponseEntity<List<Employee>> findAll() {
 		return new ResponseEntity(employeeService.findAll(), HttpStatus.OK);
 	}
 	
@@ -39,6 +41,18 @@ public class EmployeeController {
 	public ResponseEntity<?> findById(@PathVariable Integer eid) {
 		return new ResponseEntity(employeeService.findById(eid), HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("/findEnameById/{eid}")
+	public ResponseEntity<?> findEnameById(@PathVariable Integer eid) {
+		return new ResponseEntity(employeeService.findNameById(eid), HttpStatus.OK);
+	}
+	
+	@GetMapping("/findEnameByIdWithOp/{eid}")
+	public ResponseEntity<?> findEnameByIdWithOp(@PathVariable Integer eid) {
+		return new ResponseEntity(employeeService.findNameByIdWithOp(eid), HttpStatus.OK);
+	}
+	
 	
 	@GetMapping("/findByName/{ename}")
 	public ResponseEntity<?> findByName(@PathVariable String ename) {

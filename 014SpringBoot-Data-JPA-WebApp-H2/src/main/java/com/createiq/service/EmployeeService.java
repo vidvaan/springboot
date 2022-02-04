@@ -17,5 +17,9 @@ public interface EmployeeService {
     public List<Employee> findByName(String ename);
     
     public Employee findById(Integer eid);
+    
+    public String findNameById(Integer eid);
+    
+    public String findNameByIdWithOp(Integer eid);
 	
 }

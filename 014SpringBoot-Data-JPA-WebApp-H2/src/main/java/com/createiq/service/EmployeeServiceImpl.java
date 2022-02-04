@@ -1,6 +1,7 @@
 package com.createiq.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import com.createiq.repository.EmployeeRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+	
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
@@ -40,7 +42,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee findById(Integer eid) {
+		System.out.println(employeeRepository.findEmpBySalary(10000.00));
 		return employeeRepository.findById(eid).get();
+	}
+
+	@Override
+	public String findNameById(Integer eid) {
+		return employeeRepository.findEnameByEid(eid);
+	}
+
+	@Override
+	public String findNameByIdWithOp(Integer eid) {
+		Optional<String> name = employeeRepository.findEnameByEidWithOp(eid);
+		if(name.isPresent()) {
+			return name.get();
+		}
+		return "";
 	}
 
 }
