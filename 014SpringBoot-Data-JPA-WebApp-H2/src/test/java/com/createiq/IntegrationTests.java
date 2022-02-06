@@ -1,7 +1,5 @@
 package com.createiq;
  
-import javax.xml.bind.ValidationException;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

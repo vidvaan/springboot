@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.createiq.entity.Employee;
+import com.createiq.exception.EmployeeNotFoundException;
 import com.createiq.repository.EmployeeRepository;
 
 @Service
@@ -43,6 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee findById(Integer eid) {
 		System.out.println(employeeRepository.findEmpBySalary(10000.00));
+		
+		if(!employeeRepository.findById(eid).isPresent()) {
+		     throw new EmployeeNotFoundException("Employee Record not found with id "+eid);
+		}
 		return employeeRepository.findById(eid).get();
 	}
 
