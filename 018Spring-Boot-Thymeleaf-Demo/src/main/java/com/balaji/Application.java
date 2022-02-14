@@ -21,7 +21,7 @@ public class Application  implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		userService.addUser(new User(2, "Ram", "H", "ram@gmail.com", "ram", "User", true));
+	//	userService.addUser(new User(2, "Ram", "H", "ram@gmail.com", "ram", "User", "true"));
 		
 	}
 

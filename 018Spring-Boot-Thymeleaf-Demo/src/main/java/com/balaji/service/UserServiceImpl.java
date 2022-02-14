@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void addUser(User user) {
 		if(user !=null) {
-			user.setEnableUpdated(user.getEnabled() ? 1 : 0);
+			user.setEnableUpdated("true".equalsIgnoreCase(user.getEnabled()) ? 1 : 0);
 			user.setPasswordEncoded(bCryptPasswordEncoder.encode(user.getPassword()));
 		}
 		

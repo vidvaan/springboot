@@ -8,7 +8,7 @@ public class User {
 	private String email;
 	private String password;
 	private String role;
-	private Boolean enabled;
+	private String enabled;
 	
 	private int enableUpdated;
 	private String passwordEncoded;
@@ -31,7 +31,7 @@ public class User {
 		this.passwordEncoded = passwordEncoded;
 	}
 
-	public User(Integer uid, String fname, String lname, String email, String password, String role, Boolean enabled) {
+	public User(Integer uid, String fname, String lname, String email, String password, String role, String enabled) {
 		super();
 		this.uid = uid;
 		this.fname = fname;
@@ -94,12 +94,16 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	
 
-	public Boolean getEnabled() {
+	
+
+	public String getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(Boolean enabled) {
+	public void setEnabled(String enabled) {
 		this.enabled = enabled;
 	}
 
